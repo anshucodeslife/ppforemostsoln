@@ -114,19 +114,19 @@ const Home = () => {
     }, []);
 
     //Testimonial one-by-one staggered animation
-    const testimonialContainer = {
-        hidden: {},
-        visible: {
-            transition: {
-                staggerChildren: 0.3,
-            },
-        },
-    };
+    // const testimonialContainer = {
+    //     hidden: {},
+    //     visible: {
+    //         transition: {
+    //             staggerChildren: 0.3,
+    //         },
+    //     },
+    // };
 
-    const testimonialItem = {
-        hidden: { opacity: 0, y: 20 },
-        visible: { opacity: 1, y: 0 },
-    };
+    // const testimonialItem = {
+    //     hidden: { opacity: 0, y: 20 },
+    //     visible: { opacity: 1, y: 0 },
+    // };
 
     // Track cursor position
     useEffect(() => {
