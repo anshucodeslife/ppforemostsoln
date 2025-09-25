@@ -54,53 +54,53 @@ const Home = () => {
         }));
     };
 
-    useEffect(() => {
-        const elements = [];
-        for (let i = 0; i < 15; i++) {
-            elements.push({
-                x: Math.random() * window.innerWidth,
-                y: Math.random() * window.innerHeight,
-                vx: (Math.random() - 0.5) * 0.5,
-                vy: (Math.random() - 0.5) * 0.5,
-                size: Math.random() * 30 + 10,
-                opacity: Math.random() * 0.5 + 0.1
-            });
-        }
-        setFloatingElements(elements);
-        const animateElements = () => {
-            setFloatingElements(prevElements =>
-                prevElements.map(el => {
-                    let newX = el.x + el.vx;
-                    let newY = el.y + el.vy;
-                    if (newX < 0 || newX > window.innerWidth) el.vx *= -1;
-                    if (newY < 0 || newY > window.innerHeight) el.vy *= -1;
-                    const dx = cursorRef.current.x - newX;
-                    const dy = cursorRef.current.y - newY;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-                    if (distance < 200) {
-                        newX += dx * 0.01;
-                        newY += dy * 0.01;
-                    }
-                    return {
-                        ...el,
-                        x: newX,
-                        y: newY
-                    };
-                })
-            );
-            requestAnimationFrame(animateElements);
-        };
-        const animationId = requestAnimationFrame(animateElements);
-        return () => cancelAnimationFrame(animationId);
-    }, []);
+    // useEffect(() => {
+    //     const elements = [];
+    //     for (let i = 0; i < 15; i++) {
+    //         elements.push({
+    //             x: Math.random() * window.innerWidth,
+    //             y: Math.random() * window.innerHeight,
+    //             vx: (Math.random() - 0.5) * 0.5,
+    //             vy: (Math.random() - 0.5) * 0.5,
+    //             size: Math.random() * 30 + 10,
+    //             opacity: Math.random() * 0.5 + 0.1
+    //         });
+    //     }
+    //     setFloatingElements(elements);
+    //     const animateElements = () => {
+    //         setFloatingElements(prevElements =>
+    //             prevElements.map(el => {
+    //                 let newX = el.x + el.vx;
+    //                 let newY = el.y + el.vy;
+    //                 if (newX < 0 || newX > window.innerWidth) el.vx *= -1;
+    //                 if (newY < 0 || newY > window.innerHeight) el.vy *= -1;
+    //                 const dx = cursorRef.current.x - newX;
+    //                 const dy = cursorRef.current.y - newY;
+    //                 const distance = Math.sqrt(dx * dx + dy * dy);
+    //                 if (distance < 200) {
+    //                     newX += dx * 0.01;
+    //                     newY += dy * 0.01;
+    //                 }
+    //                 return {
+    //                     ...el,
+    //                     x: newX,
+    //                     y: newY
+    //                 };
+    //             })
+    //         );
+    //         requestAnimationFrame(animateElements);
+    //     };
+    //     const animationId = requestAnimationFrame(animateElements);
+    //     return () => cancelAnimationFrame(animationId);
+    // }, []);
 
-    useEffect(() => {
-        const handleMouseMove = (e: MouseEvent) => {
-            cursorRef.current = { x: e.clientX, y: e.clientY };
-        };
-        window.addEventListener('mousemove', handleMouseMove);
-        return () => window.removeEventListener('mousemove', handleMouseMove);
-    }, []);
+    // useEffect(() => {
+    //     const handleMouseMove = (e: MouseEvent) => {
+    //         cursorRef.current = { x: e.clientX, y: e.clientY };
+    //     };
+    //     window.addEventListener('mousemove', handleMouseMove);
+    //     return () => window.removeEventListener('mousemove', handleMouseMove);
+    // }, []);
 
     const RobotIcon = () => (
         <svg
